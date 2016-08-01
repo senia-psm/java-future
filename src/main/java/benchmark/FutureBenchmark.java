@@ -23,15 +23,15 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 
-@Fork(1)
+@Fork(2)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-@Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
-@Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
+//@Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
+//@Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 @State(Scope.Thread)
 public class FutureBenchmark {
 
-    @Param({"400"})
+    @Param({"400", "4000", "40000"})
     public int requestCount;
 
     @Param({"10000"})
@@ -207,7 +207,8 @@ public class FutureBenchmark {
     @Benchmark
     public void completableProcessing(Blackhole bh) {
         final List<Future<?>> futures = requests.stream()
-                .map(r -> completableFutureGetTypedEmployee(r).thenAccept(bh::consume))
+                .map(r -> completableFutureGetTypedEmployee(r)
+                        .thenAccept(bh::consume))
                 .collect(toList());
 
         for (Future<?> f : futures) {

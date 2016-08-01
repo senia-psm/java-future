@@ -49,7 +49,7 @@ public final class Generator {
 
     private static List<JobHistoryEntry> generateJobHistoryEntryList() {
         return Stream.generate(Generator::generateJobHistoryEntry)
-                .limit(ThreadLocalRandom.current().nextInt(5))
+                .limit(ThreadLocalRandom.current().nextInt(6))
                 .collect(toList());
     }
 
