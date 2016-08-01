@@ -225,7 +225,7 @@ public class FutureBenchmark {
 
         final CompletableFuture<Employee> employee = employeeDb.get(key);
 
-        return employee.thenComposeAsync(this::asyncToTyped);
+        return employee.thenComposeAsync((e) -> asyncToTyped(e));
 
     }
 
