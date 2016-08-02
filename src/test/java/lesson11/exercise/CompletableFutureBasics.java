@@ -98,7 +98,9 @@ public class CompletableFutureBasics {
         // futurePerson.???
 
         assertTrue(futurePerson.isCompletedExceptionally());
-        assertTrue(futurePerson.thenApply(x -> false).exceptionally(t -> t instanceof NoSuchElementException).get());
+        assertTrue(futurePerson
+                .thenApply(x -> false)
+                .exceptionally(t -> t.getCause() instanceof NoSuchElementException).get());
     }
 
     @Test
