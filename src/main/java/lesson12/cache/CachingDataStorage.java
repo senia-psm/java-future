@@ -6,12 +6,6 @@ import java.util.concurrent.CompletableFuture;
 
 public interface CachingDataStorage<T> extends DataStorage<T> {
 
-    class UotdatedException extends RuntimeException {
-        public UotdatedException(String message) {
-            super(message);
-        }
-    }
-
     class OutdatableResult<T> {
         private final CompletableFuture<T> result;
         private final CompletableFuture<Void> outdated;
