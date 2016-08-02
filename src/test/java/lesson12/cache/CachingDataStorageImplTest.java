@@ -69,6 +69,7 @@ public class CachingDataStorageImplTest {
         values = new HashMap<>();
         final Person person2 = new Person("John", "Doe", 30);
         values.put("a", new Employee(person2, Collections.emptyList()));
+        employeeDb.setValues(values);
 
         Thread.sleep(10);
         final OutdatableResult<Employee> result2 = employeeCache.getOutdatable("a");
