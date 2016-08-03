@@ -14,7 +14,7 @@ public class CachingDataStorageImpl<T> implements CachingDataStorage<T> {
     private final int timeout;
     private final TimeUnit timeoutUnits;
     // TODO can we use Map<String, T> here? Why?
-    private final ConcurrentMap<String, CompletableFuture<T>> cache = new ConcurrentHashMap<>();
+    private final ConcurrentMap<String, OutdatableResult<T>> cache = new ConcurrentHashMap<>();
 
     public CachingDataStorageImpl(DataStorage<T> db, int timeout, TimeUnit timeoutUnits) {
         this.db = db;
