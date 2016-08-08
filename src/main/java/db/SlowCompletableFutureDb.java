@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.*;
 
-public class SlowCompletableFutureDb<T> implements DataStorage<T>, Closeable {
+public class SlowCompletableFutureDb<T> implements DataStorage<String, T>, Closeable {
 
     private volatile Map<String, T> values;
     private final ScheduledExecutorService scheduledExecutorService =

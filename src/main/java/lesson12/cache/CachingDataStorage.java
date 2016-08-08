@@ -4,7 +4,7 @@ import db.DataStorage;
 
 import java.util.concurrent.CompletableFuture;
 
-public interface CachingDataStorage<T> extends DataStorage<T> {
+public interface CachingDataStorage<K, T> extends DataStorage<K, T> {
 
     class OutdatableResult<T> {
         private final CompletableFuture<T> result;
@@ -24,10 +24,10 @@ public interface CachingDataStorage<T> extends DataStorage<T> {
         }
     }
 
-    OutdatableResult<T> getOutdatable(String key);
+    OutdatableResult<T> getOutdatable(K key);
 
     @Override
-    default CompletableFuture<T> get(String key) {
+    default CompletableFuture<T> get(K key) {
         return getOutdatable(key).getResult();
     }
 }
