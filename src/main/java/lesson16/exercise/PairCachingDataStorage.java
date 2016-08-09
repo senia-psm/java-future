@@ -11,7 +11,7 @@ public class PairCachingDataStorage<K, T, K1, T1, K2, T2> implements CachingData
                                   CachingDataStorage<K2, T2> storage2,
                                   Function<K, K1> getKey1,
                                   Function<K, K2> getKey2,
-                                  BiFunction<T1, T2, T> resultMapper) {
+                                  Function<K, BiFunction<T1, T2, T>> resultMapper) {
         // TODO
         throw new UnsupportedOperationException();
     }
