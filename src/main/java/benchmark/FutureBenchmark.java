@@ -23,11 +23,11 @@ import java.util.stream.Stream;
 import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 
-@Fork(2)
+@Fork(1)
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MILLISECONDS)
-//@Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
-//@Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
+@Warmup(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
+@Measurement(iterations = 5, time = 1, timeUnit = TimeUnit.SECONDS)
 @State(Scope.Thread)
 public class FutureBenchmark {
 
